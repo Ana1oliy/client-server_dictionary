@@ -1,4 +1,4 @@
-package dictionary.commands;
+ï»¿package dictionary.commands;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -19,7 +19,7 @@ public class GetCommand implements Serializable, DictionaryCommand {
 	public String run(Dictionary dictionary) {
 		Set<String> words = dictionary.get(key);
 		if (words.isEmpty()) {
-			return "<ñëîâî îòñóòâóåò â ñëîâàðå>";
+			return "<ÑÐ»Ð¾Ð²Ð¾ Ð¾Ñ‚ÑÑƒÑ‚Ð²ÑƒÐµÑ‚ Ð² ÑÐ»Ð¾Ð²Ð°Ñ€Ðµ>";
 		} else {
 			return String.join("\n", words);
 		}

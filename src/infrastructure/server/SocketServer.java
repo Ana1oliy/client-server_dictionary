@@ -1,10 +1,11 @@
-package infrastructure.server;
+﻿package infrastructure.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,8 +56,10 @@ public class SocketServer {
 						Socket client = serverListener.accept();
 						Connection newConnection = new SocketConnection(client);
 						executor.execute(workerFactory.createWorker(newConnection, executor));
-					} catch (IOException exc) {
-						exc.printStackTrace();
+					} catch (SocketException e) {
+						// Suppose that socket normally closed. But this is not always true
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 				}
 				

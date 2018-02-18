@@ -1,4 +1,4 @@
-package dictionary.commands;
+ï»¿package dictionary.commands;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -22,6 +22,6 @@ public class AddCommand implements Serializable, DictionaryCommand {
 	@Override
 	public String run(Dictionary dictionary) {
 		dictionary.add(key, Arrays.asList(words));
-		return "<çíà÷åíèÿ ñëîâà óñïåøíî äîáàâëåíû>";
+		return "<Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ ÑÐ»Ð¾Ð²Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹>";
 	}
 }

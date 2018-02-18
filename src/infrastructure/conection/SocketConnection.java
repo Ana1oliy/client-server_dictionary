@@ -1,4 +1,4 @@
-package infrastructure.conection;
+﻿package infrastructure.conection;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

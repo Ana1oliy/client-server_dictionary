@@ -1,4 +1,4 @@
-package dictionary;
+﻿package dictionary;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -1,6 +1,7 @@
-package dictionary.commands;
+ï»¿package dictionary.commands;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import dictionary.Dictionary;
 
@@ -8,21 +9,21 @@ public class DeleteCommand implements Serializable, DictionaryCommand {
 	
 	private static final long serialVersionUID = 1L;
 
-	public DeleteCommand(String key, String word) {
+	public DeleteCommand(String key, Collection<String> words) {
 		this.key = key;
-		this.word = word;
+		this.words = words;
 	}
 	
 	private String key;
 	
-	private String word;
+	private Collection<String> words;
 
 	@Override
 	public String run(Dictionary dictionary) {
-		if (dictionary.delete(key, word)) {
-			return "<çíà÷åíèÿ ñëîâà óñïåøíî óäàëåíû>";
+		if (dictionary.delete(key, words)) {
+			return "<Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ ÑÐ»Ð¾Ð²Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½Ñ‹>";
 		} else {
-			return "<ñëîâî/çíà÷åíèå îòñóòâóåò â ñëîâàðå>";
+			return "<ÑÐ»Ð¾Ð²Ð¾/Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¾Ñ‚ÑÑƒÑ‚Ð²ÑƒÐµÑ‚ Ð² ÑÐ»Ð¾Ð²Ð°Ñ€Ðµ>";
 		}
 	}
 }

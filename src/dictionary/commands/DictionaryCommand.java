@@ -1,4 +1,4 @@
-package dictionary.commands;
+﻿package dictionary.commands;
 
 import dictionary.Dictionary;
 

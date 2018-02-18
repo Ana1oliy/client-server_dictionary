@@ -1,6 +1,9 @@
-package infrastructure;
+﻿package infrastructure;
 
+import java.io.EOFException;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.SocketException;
 import java.nio.channels.CompletionHandler;
 import java.util.function.Consumer;
 
@@ -15,10 +18,19 @@ public class Reader<T> implements Runnable {
 	
 	private CompletionHandler<T, Void> completionHandler;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
 		try {
 			completionHandler.completed((T) in.readObject(), null);
+		} catch (EOFException e) {
+            // Stream closed
+        } catch (SocketException e) {
+        	// Socket error. Suppose that socket normally closed. But this is not always true
+        } catch (ClassNotFoundException e) {
+        	completionHandler.failed(e, null);
+        } catch (IOException e) {
+        	completionHandler.failed(e, null);
 		} catch (Throwable e) {
 			completionHandler.failed(e, null);
 		}
